@@ -6,6 +6,7 @@ import pro.sky.stream_api_optional1.model.Employee;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 @Service
 public class EmployeeService {
@@ -36,15 +37,14 @@ public class EmployeeService {
                 .min(Comparator.comparingDouble(Employee::getSalary))
                 .orElseThrow(() -> new IllegalArgumentException("Нет сотрудников в отделе"));
     }
-    public List<Employee> showAll() {
+    public Map<Integer, List<Employee>> showAll() {
         return Arrays.stream(staff)
                 .filter(e -> e != null)
-                .sorted(Comparator.comparingInt(Employee ::getDepartment))
-                .collect(Collectors.toList());
+                .collect(Collectors.groupingBy(Employee ::getDepartment));
 
     }
-    public List<Employee> showAllDept(int department) {
-        return Arrays.stream(staff)
+    public Map<Integer, List<Employee>> showAllDept(int department) {
+        return (Map<Integer , List<Employee>>) Arrays.stream(staff)
                 .filter(e -> e != null)
                 .filter(e -> e.getDepartment() == department)
                 .collect(Collectors.toList());

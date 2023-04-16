@@ -7,6 +7,8 @@ import pro.sky.stream_api_optional1.model.Employee;
 import pro.sky.stream_api_optional1.service.EmployeeService;
 
 import java.util.List;
+import java.util.Map;
+
 @RestController
 public class EmployeeContrller {
     private final EmployeeService service;
@@ -25,11 +27,11 @@ public class EmployeeContrller {
         return service.getMaxSalaryByDept(id);
     }
     @GetMapping("/departments/all")
-    public List<Employee> getEmployeeByDept (@RequestParam(value = "departmentsId", required = false ) Integer id) {
+    public Map<Integer , List<Employee>> getEmployeeByDept (@RequestParam(value = "departmentsId", required = false ) Integer id) {
         if (id == null) {
-            return service.showAll();
+            return  service.showAll();
         }
-        return service.showAllDept(id);
+        return  service.showAllDept(id);
     }
 
 
