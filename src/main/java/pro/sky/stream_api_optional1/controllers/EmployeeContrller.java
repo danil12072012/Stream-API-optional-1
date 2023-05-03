@@ -33,6 +33,17 @@ public class EmployeeContrller {
         }
         return  service.showAllDept(id);
     }
+    @GetMapping("/add")
+    public  void add (@RequestParam ("nameEmployee") String nameEmployee,
+                                   @RequestParam("surnameEmployee") String surnameEmployee,
+                                   @RequestParam("patronymicEmployee") String patronymicEmployee,
+                                   @RequestParam("department") int department,
+                                   @RequestParam("salary") int salary) {
+
+
+
+    }
+
 
 
 }

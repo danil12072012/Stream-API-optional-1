@@ -10,18 +10,21 @@ import java.util.Map;
 import java.util.stream.Collectors;
 @Service
 public class EmployeeService {
+    private final ValidatorServce validatorServce;
+
     private Employee[] staff = new Employee[10];
-    EmployeeService() {
-        staff [0] = new Employee("Иванов", "Иван", "Иванович", 1, 14500);
-        staff [1] = new Employee("Петров", "Иван", "Васильевич", 5, 15500);
-        staff [2] = new Employee("Пупкин", "Василий", "Петрович", 3, 15685);
-        staff [3] = new Employee("Васильева", "Марфа", "Петровна", 4, 16524);
-        staff [4] = new Employee("Сидоров", "Александр", "Иванович", 3, 14327);
-        staff [5] = new Employee("Пупенко", "Ольга", "Владимировна", 2, 15458);
-        staff [6] = new Employee("Дудка", "Николай", "Александрович", 3, 16895);
-        staff [7] = new Employee("Иванова", "Марина", "Николаевна", 1, 15855);
-        staff [8] = new Employee("Петрова", "Любовь", "Александровна", 5, 14252);
-        staff [9] = new Employee("Сидорова", "Елена", "Львовна", 2, 15328);
+    EmployeeService(ValidatorServce validatorServce) {
+        this.validatorServce = validatorServce;
+        staff [0] = new Employee();
+        staff [1] = new Employee();
+        staff [2] = new Employee();
+        staff [3] = new Employee();
+        staff [4] = new Employee();
+        staff [5] = new Employee();
+        staff [6] = new Employee();
+        staff [7] = new Employee();
+        staff [8] = new Employee();
+        staff [9] = new Employee();
     }
     public Employee getMaxSalaryByDept(int department) {
         return Arrays.stream(staff)
@@ -50,6 +53,16 @@ public class EmployeeService {
                 .collect(Collectors.toList());
 
 
+    }
+    public Employee add (String nameEmployee,
+                         String surnameEmployee,
+                         String patronymicEmployee,
+                         int department,
+                         int salary) {
+        Employee employee = new Employee(
+        );
+
+        return employee;
     }
 
 }

@@ -9,7 +9,7 @@ public class Employee {
     private int id;
     static int counter = 1;
 
-    public Employee(String surnameEmployee, String nameEmployee, String patronymicEmployee,int department, int salary) {
+    public Employee() {
         id = counter++;
 
         this.surnameEmployee = surnameEmployee;
